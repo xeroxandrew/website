@@ -82,6 +82,7 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.8);
+    text-align: center;
   }
 
   .modal-content {
@@ -93,16 +94,19 @@ body {
     height: auto;
   }
 
-  .caption {
-    text-align: center;
-    color: white;
-    font-size: 1.2em;
+  .modal-link {
     margin-top: 1em;
   }
 
-  .caption a {
-    color: #d6686f;
-    text-decoration: underline;
+  .modal-link a {
+    color: rgba(214, 104, 111, 0.7);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .modal-link a:hover {
+    color: rgba(214, 104, 111, 1);
   }
 
   .close {
@@ -122,9 +126,16 @@ body {
     height: auto;
   }
 
-  .work-list {
+  .work-list{
     text-align: left;
-    padding-left: 10%;
+    margin: none;
+    margin-left: 10%;
+  }
+
+  .work-list ul{
+    text-align: left;
+    justify-content: left;
+    list-style-type: none;
   }
 
   .work-list a {
