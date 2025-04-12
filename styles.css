@@ -1,13 +1,145 @@
-body{
-    background-color: powderblue;
-}
-h1{
-    font-size: 100;
+body {
+    background-color: #1f4437;
+    color: #d6686f;
+    font-family: "Roboto Mono", monospace;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #2e5c4a;
+    padding: 1em 0;
+  }
+  
+  nav menu {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .button {
+    list-style-type: none;
+  }
+  
+  .button a {
+    text-decoration: none;
+    color: #d6686f;
     font-weight: bold;
-}
-p{
-    font-size: 100;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    background-color: rgba(214, 104, 111, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .button a:hover {
+    background-color: rgba(214, 104, 111, 0.4);
+  }
+  
+  h1, p {
+    text-align: center;
+    max-width: 90%;
+    margin: 1em auto;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1em;
+  }
+  
+  footer a {
+    margin: 0 1em;
+    color: #d6686f;
+    text-decoration: none;
+  }
+  
+  .collage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 2em auto;
+    max-width: 600px;
+  }
+
+  .collage img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 75vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+  }
+
+  .caption {
+    text-align: center;
+    color: white;
+    font-size: 1.2em;
+    margin-top: 1em;
+  }
+
+  .caption a {
+    color: #d6686f;
+    text-decoration: underline;
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
     font-weight: bold;
-    border: none;
-    padding: 0px;
-}
+    cursor: pointer;
+  }
+  
+  img.profile {
+    display: block;
+    margin: 2em auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .work-list {
+    text-align: left;
+    padding-left: 10%;
+  }
+
+  .work-list a {
+    color: rgba(214, 104, 111, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .work-list a:hover {
+    color: rgba(214, 104, 111, 1);
+  }
+  
+  @media (max-width: 600px) {
+    nav menu {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
