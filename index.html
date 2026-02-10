@@ -1,33 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
-  <title>ac's website</title>
+  <title>Home | Andrew Chen</title>
+  <link rel="stylesheet" href="styles/main.css" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/66eea3422f.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <header class="top">
-    <nav id="navs">
-      <menu>
-        <li class="button"><a class="active" href="index.html">Home</a></li>
-        <li class="button"><a href="work.html">Work</a></li>
-        <li class="button"><a href="headspace.html">Excelencia</a></li>
-      </menu>
+<div class="grid-container">
+  <div id="header-color"></div>
+  <div class="header">
+    <h2>Andrew Chen</h2>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="updates.html">Updates</a>
+      <a href="blog.html">Blog</a>
+<div class="socials">
+        <a href="https://github.com/andrewchen3" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://andrewchen3.substack.com" target="_blank" aria-label="Substack"><i class="fas fa-rss"></i></a>
+        <a href="https://www.goodreads.com/" target="_blank" aria-label="Goodreads"><i class="fab fa-goodreads"></i></a>
+      </div>
     </nav>
-  </header>
+  </div>
 
-  <h1>Andrew Chen</h1>
-  <p>Senior @ Cornell studying finance and data science</p>
-  <p>Interests: L/S investing, FC Barcelona, Russian history and literature, arthouse films, swimming</p>
+  <div id="homepage-container">
+    <div id="homepage-grid" style="display: flex; flex-direction: row; gap: 8ch;">
+      <div id="left-col" style="max-width: 55ch;">
+        <p>
+          I want to spend my life building cool things with my friends —
+          mostly tools for investors, and occasionally writing about what I learn along the way.
+        </p>
 
-  <footer>
-    <a href="https://www.linkedin.com/in/andrewchen3/">LinkedIn</a>
-    <a href="https://laincap.substack.com">Substack</a>
-    <a href="mailto:ac2463@cornell.edu">Email</a>
-  </footer>
-  
-  <script src="scripts/jquery-3.7.1.js"></script>
-  <script src="scripts/images.js"></script>
+        <p>
+          Right now I'm building
+          <ul>
+            <li><a href="#" target="_blank">Pulse</a>: an AI Excel agent for hedge funds and public‑market research.</li>
+            <li>Scrapers + signal pipelines (LMS adoption, RFPs, pricing, and “proof of adoption” evidence).</li>
+            <li>Open‑source + small experiments in automation and research workflows.</li>
+          </ul>
+        </p>
+
+        <p>
+          And learning
+          <ul>
+            <li>How to design products that feel simple (even when the plumbing isn't).</li>
+            <li>How to write clearly about investing, data, and building.</li>
+            <li>How to ship faster and with fewer “almost done” projects.</li>
+          </ul>
+        </p>
+      </div>
+
+      <div id="artwork" style="max-width: 55ch;">
+        <h2>Bookshelf</h2>
+
+        <div id="bookshelfViewport" aria-label="Animated bookshelf">
+          <div id="bookshelf"></div>
+        </div>
+        <div id="bookshelfShelfLine" aria-hidden="true"></div>
+
+        <div id="influences" style="margin-top: 1rem">
+          <h2>Influences</h2>
+          <nav>
+            <a onclick="changeInfluenceContent('books')" class="influence-nav-item books active">Books</a>
+            <a onclick="changeInfluenceContent('movies')" class="influence-nav-item movies">Movies</a>
+            <a onclick="changeInfluenceContent('artists')" class="influence-nav-item artists">Artists</a>
+          </nav>
+
+          <div id="influences-content">
+            <div id="books" class="active-influence-content">
+              <details>
+                <summary>Norwegian Wood</summary>
+                <blockquote>
+                  A book about heartbreak, memory, and what it means to keep moving.
+                </blockquote>
+              </details>
+              <details>
+                <summary>A Little Life</summary>
+                <blockquote>
+                  A story about friendship, ambition, and trauma over decades.
+                </blockquote>
+              </details>
+              <details open>
+                <summary>Words Without Music</summary>
+                <blockquote>
+                  Philip Glass’ persistence over decades is a reminder to keep your creative identity intact.
+                </blockquote>
+              </details>
+            </div>
+
+            <div id="movies">
+              <details open>
+                <summary>Past Lives</summary>
+                <blockquote>
+                  A film about timing, distance, and the lives that could have been.
+                </blockquote>
+              </details>
+              <details>
+                <summary>Before Sunrise</summary>
+                <blockquote>
+                  A romantic reminder to be present with people and with life.
+                </blockquote>
+              </details>
+              <details>
+                <summary>EEAAO</summary>
+                <blockquote>
+                  A multiverse story that still lands on the simplest human choice: kindness.
+                </blockquote>
+              </details>
+            </div>
+
+            <div id="artists">
+              <details open>
+                <summary>Hayao Miyazaki</summary>
+                <blockquote>
+                  A model of patience and craft: decades of work before the masterpieces.
+                </blockquote>
+              </details>
+              <details>
+                <summary>Rembert Montald</summary>
+                <blockquote>
+                  Proof that drawing is learnable with discipline and time.
+                </blockquote>
+              </details>
+              <details>
+                <summary>Denver Jackson</summary>
+                <blockquote>
+                  A reminder to aim higher and sooner, and to ship the thing.
+                </blockquote>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="scripts/bookshelf.js"></script>
+<script src="scripts/homepage.js"></script>
 </body>
 </html>
