@@ -4,6 +4,17 @@ html {
   scroll-padding-top: 5em;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   overscroll-behavior-y: none;
@@ -20,16 +31,16 @@ p + ul, p + ol {
 }
 
 .grid-container {
-  width: 85%;
+  width: min(85%, 150ch);
   display: grid;
   row-gap: 4em;
   column-gap: 4ch;
-  grid-template-columns: 4ch 55ch 75ch;
+  grid-template-columns: 4ch minmax(0, 55ch) minmax(0, 75ch);
   margin: auto;
 }
 
 .grid-container.art-faves {
-  grid-template-columns: 16ch 55ch;
+  grid-template-columns: 16ch minmax(0, 55ch);
 }
 
 .timeline-container.cooking {
@@ -169,12 +180,15 @@ p {
   margin-block-start: 0;
 }
 
-/* #homepage-grid {
-  display: grid;
-  grid-template-columns: 55ch 60ch;
-  grid-template-rows: max-content;
-  grid-column-gap: 4ch
-} */
+#homepage-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 8ch;
+}
+
+#homepage-grid > * {
+  min-width: 0;
+}
 
 #past {
   grid-column-start: 1;
@@ -464,8 +478,8 @@ ul {
   content: url(/img/exa-mural.jpg);
 }
 
-/* mobile specific */
-@media only screen and (max-device-width: 768px) {
+/* mobile/tablet specific */
+@media only screen and (max-width: 900px) {
   #mural-header {
     content: url(/img/exa-mural-crop.jpg);
   }
@@ -482,7 +496,9 @@ ul {
   }
 
   #homepage-grid {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
   }
 
   #artwork-gallery {
@@ -595,7 +611,7 @@ ul {
 /* --- Bookshelf (replaces Artwork section) --- */
 #bookshelfViewport {
   perspective: 900px;
-  height: 18em;
+  height: 12.5em;
   overflow: hidden;
   transform-style: preserve-3d;
 }
@@ -614,11 +630,21 @@ ul {
   border-radius: 0;
   transform-style: preserve-3d;
   cursor: pointer;
+  transition: filter 160ms ease;
 }
 
-#bookshelf .book a {
+#bookshelf .book button.book-trigger {
   position: absolute;
   inset: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+#bookshelf .book button.book-trigger:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.72);
+  outline-offset: 2px;
 }
 
 #bookshelf .book .spine {
@@ -627,17 +653,34 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  backface-visibility: hidden;
 }
 
 #bookshelf .book .spine span {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   line-height: 1;
   color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 0.35px 0 rgba(0, 0, 0, 0.35);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
   padding: 0.6em 0;
   text-align: center;
   user-select: none;
+  backface-visibility: hidden;
+}
+
+#bookshelf .book:hover .spine span,
+#bookshelf .book:focus-within .spine span {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+#bookshelf .book:hover,
+#bookshelf .book:focus-within {
+  filter: brightness(1.12) saturate(1.05);
 }
 
 /* Subtle shelf line */
@@ -645,6 +688,183 @@ ul {
   height: 2px;
   background: rgba(0, 0, 0, 0.08);
   margin-top: 0.6em;
+}
+
+body.reader-open {
+  overflow: hidden;
+}
+
+.book-reader {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.book-reader.is-visible {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.book-reader__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 7, 5, 0.38);
+  backdrop-filter: blur(2px);
+}
+
+.book-reader__stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.book-reader__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.94);
+  color: #111;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  font-family: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.book-reader__book {
+  position: fixed;
+  perspective: 1700px;
+  transform-origin: top left;
+  z-index: 2;
+}
+
+.book-reader__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.book-reader__cover {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 4;
+}
+
+.book-reader__inner.is-open .book-reader__cover {
+  transform: rotateY(-160deg);
+}
+
+.book-reader__cover-front,
+.book-reader__cover-inside {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.book-reader__cover-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.95);
+  padding: 1.6rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.3);
+}
+
+.book-reader__cover-inside {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #f3ede0, #e8dcc9);
+}
+
+.book-reader__pages {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f9f4e8;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
+}
+
+.book-reader__page {
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 22%),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.035) 0,
+      rgba(0, 0, 0, 0.035) 1px,
+      transparent 1px,
+      transparent 2.05em
+    ),
+    #fffdfa;
+  color: #111;
+  padding: 2rem 1.3rem 1.2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transform-origin: left center;
+}
+
+.book-reader__page h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.book-reader__page p {
+  margin: 0.3rem 0 0;
+}
+
+.book-reader__thought-heading {
+  margin-top: 0 !important;
+}
+
+.book-reader__thought-heading strong {
+  font-size: 1.02rem;
+}
+
+.book-reader__thought-body {
+  margin-top: 0.6rem !important;
+  white-space: pre-wrap;
+}
+
+.book-reader__title-sub {
+  margin-top: 0.85rem !important;
+  opacity: 0.74;
+  font-size: 0.9rem;
+}
+
+.book-reader__empty-page {
+  min-height: 1.4em;
+}
+
+@media only screen and (max-width: 900px) {
+  .book-reader__close {
+    top: 0.7rem;
+    right: 0.7rem;
+  }
+
+  .book-reader__page {
+    padding: 1.05rem 0.8rem 0.9rem;
+  }
 }
 
 /* Make the RSS icon visually match the other brand icons */
