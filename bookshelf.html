@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive bookshelf of Andrew Chen's books.">
+  <title>Bookshelf | Andrew Chen</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/bookshelf.css">
+  <script src="scripts/shelf.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Main navigation">
+      <a href="index.html">home</a>
+      <a href="about.html">about me</a>
+      <a href="blog.html">blog</a>
+      <a href="bookshelf.html" aria-current="page">bookshelf</a>
+    </nav>
+  </header>
+  <main class="reading-page bookshelf-page">
+    <a class="home-link" href="index.html">Andrew Chen</a>
+    <h1>Bookshelf</h1>
+    <p class="shelf-instruction" id="shelf-help">A few books from my shelf. Hover or select a spine to take a look.</p>
+    <div class="shelf-viewport">
+      <div class="live-shelf" role="group" aria-label="Books" aria-describedby="shelf-help">
+        <button class="shelf-book is-selected" type="button" aria-pressed="true" aria-label="Siddhartha by Hermann Hesse" data-title="Siddhartha" data-author="Hermann Hesse" data-isbn="9780553208849" style="--spine-color: #c7b897; --spine-ink: #242016; --book-height: 254px; --cover-width: 154px">
+          <span class="book-spine" aria-hidden="true"><span>Siddhartha</span><small>Hermann Hesse</small></span>
+          <img class="book-cover" src="assets/books/siddhartha.jpg" width="154" height="254" alt="" aria-hidden="true">
+        </button>
+        <button class="shelf-book" type="button" aria-pressed="false" aria-label="A Little Life by Hanya Yanagihara" data-title="A Little Life" data-author="Hanya Yanagihara" data-isbn="9780804172707" style="--spine-color: #343534; --spine-ink: #fff; --book-height: 267px; --cover-width: 173px; --spine-width: 57px">
+          <span class="book-spine" aria-hidden="true"><span>A Little Life</span><small>Hanya Yanagihara</small></span>
+          <img class="book-cover" src="assets/books/a-little-life.jpg" width="173" height="267" alt="" aria-hidden="true">
+        </button>
+        <button class="shelf-book" type="button" aria-pressed="false" aria-label="Words Without Music by Philip Glass" data-title="Words Without Music" data-author="Philip Glass" data-isbn="9781631491436" style="--spine-color: #b32d29; --spine-ink: #fff; --book-height: 262px; --cover-width: 176px">
+          <span class="book-spine" aria-hidden="true"><span>Words Without Music</span><small>Philip Glass</small></span>
+          <img class="book-cover" src="assets/books/words-without-music.jpg" width="176" height="262" alt="" aria-hidden="true">
+        </button>
+        <button class="shelf-book" type="button" aria-pressed="false" aria-label="The Outsiders by S. E. Hinton" data-title="The Outsiders" data-author="S. E. Hinton" data-isbn="9780142407332" style="--spine-color: #223749; --spine-ink: #fff; --book-height: 243px; --cover-width: 164px">
+          <span class="book-spine" aria-hidden="true"><span>The Outsiders</span><small>S. E. Hinton</small></span>
+          <img class="book-cover" src="assets/books/the-outsiders.jpg" width="164" height="243" alt="" aria-hidden="true">
+        </button>
+        <button class="shelf-book" type="button" aria-pressed="false" aria-label="Meditations by Marcus Aurelius" data-title="Meditations" data-author="Marcus Aurelius" data-isbn="9780812968255" style="--spine-color: #cbbd91; --spine-ink: #292619; --book-height: 250px; --cover-width: 160px">
+          <span class="book-spine" aria-hidden="true"><span>Meditations</span><small>Marcus Aurelius</small></span>
+          <img class="book-cover" src="assets/books/meditations.jpg" width="160" height="250" alt="" aria-hidden="true">
+        </button>
+        <button class="shelf-book" type="button" aria-pressed="false" aria-label="The Beginning of Infinity by David Deutsch" data-title="The Beginning of Infinity" data-author="David Deutsch" data-isbn="9780143121350" style="--spine-color: #202a3e; --spine-ink: #fff; --book-height: 272px; --cover-width: 175px; --spine-width: 54px">
+          <span class="book-spine" aria-hidden="true"><span>The Beginning of Infinity</span><small>David Deutsch</small></span>
+          <img class="book-cover" src="assets/books/the-beginning-of-infinity.jpg" width="175" height="272" alt="" aria-hidden="true">
+        </button>
+        <button class="shelf-book" type="button" aria-pressed="false" aria-label="The Right Stuff by Tom Wolfe" data-title="The Right Stuff" data-author="Tom Wolfe" data-isbn="9780312427566" style="--spine-color: #e2e1da; --spine-ink: #252525; --book-height: 259px; --cover-width: 175px">
+          <span class="book-spine" aria-hidden="true"><span>The Right Stuff</span><small>Tom Wolfe</small></span>
+          <img class="book-cover" src="assets/books/the-right-stuff.jpg" width="175" height="259" alt="" aria-hidden="true">
+        </button>
+      </div>
+    </div>
+    <div class="shelf-caption" aria-live="polite" aria-atomic="true">
+      <h2 id="selected-title">Siddhartha</h2>
+      <p id="selected-author">Hermann Hesse</p>
+      <a id="selected-link" href="https://openlibrary.org/isbn/9780553208849" target="_blank" rel="noopener noreferrer">View book <span class="visually-hidden">on Open Library (opens in a new tab)</span><span aria-hidden="true">↗</span></a>
+    </div>
+    <noscript><p>Enable JavaScript to browse the interactive shelf.</p></noscript>
+  </main>
+</body>
+</html>
