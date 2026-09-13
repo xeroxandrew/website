@@ -1,39 +1,32 @@
-<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Writing and notes by Andrew Chen.">
   <title>Blog | Andrew Chen</title>
-  <link rel="stylesheet" href="styles/main.css" type="text/css" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Spectral&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/66eea3422f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
-
 <body>
-<div class="grid-container">
-  <div id="header-color"></div>
-  <div class="header">
-    <h2>Andrew Chen</h2>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="updates.html">Updates</a>
-      <a href="blog.html" class="active">Blog</a>
-<div class="socials">
-        <a href="https://github.com/andrewchen3" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://andrewchen3.substack.com" target="_blank" aria-label="Substack"><i class="fas fa-rss"></i></a>
-        <a href="https://www.goodreads.com/user/show/167103746-andrew" target="_blank" aria-label="Goodreads"><i class="fab fa-goodreads"></i></a>
-      </div>
+  <header class="site-header">
+    <nav aria-label="Main navigation">
+      <a href="about.html">about me</a>
+      <a href="blog.html" aria-current="page">blog</a>
     </nav>
-  </div>
-
-  <div class="timeline-container blog-list">
-    <ul>
-      <li><a href="#">Why I’m building Pulse</a></li>
-      <li><a href="#">Signals I care about in EdTech</a></li>
-      <li><a href="#">Notes on building scrapers that don’t break</a></li>
-    </ul>
-  </div>
-</div>
+  </header>
+  <main class="reading-page">
+    <a class="home-link" href="index.html">Andrew Chen</a>
+    <h1>Blog</h1>
+    <p>Writing on <a href="https://andrewchen3.substack.com">Substack</a>.</p>
+    <section class="writing-list" aria-labelledby="in-progress">
+      <h2 id="in-progress">In progress</h2>
+      <ul>
+        <li><span>Why I’m building Pulse</span><span class="note">Draft</span></li>
+        <li><span>Signals I care about in EdTech</span><span class="note">Draft</span></li>
+        <li><span>Notes on building scrapers that don’t break</span><span class="note">Draft</span></li>
+      </ul>
+    </section>
+    <p class="archive-link"><a href="updates.html">Life updates</a></p>
+  </main>
 </body>
 </html>
