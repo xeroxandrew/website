@@ -6,7 +6,8 @@
   const books = [...shelf.querySelectorAll('.shelf-book')];
   const title = document.getElementById('selected-title');
   const author = document.getElementById('selected-author');
-  const link = document.getElementById('selected-link');
+  const comments = document.getElementById('selected-comments');
+  const commentsByBook = JSON.parse(document.getElementById('book-comments').textContent);
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let selected = books.find(book => book.classList.contains('is-selected'));
   let scrollTimer;
@@ -30,11 +31,13 @@
       selected = book;
       title.textContent = book.dataset.title;
       author.textContent = book.dataset.author;
-      link.href = `https://openlibrary.org/isbn/${book.dataset.isbn}`;
+      comments.textContent = commentsByBook[book.dataset.book] || '';
     }
     clearTimeout(scrollTimer);
     if (shouldReveal) scrollTimer = setTimeout(() => reveal(book), reducedMotion.matches ? 0 : 380);
   }
+
+  comments.textContent = commentsByBook[selected.dataset.book] || '';
 
   books.forEach((book, index) => {
     book.addEventListener('pointerenter', event => {

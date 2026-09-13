@@ -8,7 +8,17 @@ Original public-domain reproduction: https://commons.wikimedia.org/wiki/File:Fra
 
 ## Bookshelf
 
-Book covers are served locally from `books/`, sourced from Open Library's cover service. Cover artwork belongs to its respective rights holders. Each book on the shelf links to its edition on Open Library.
+Book covers are served locally from `books/`, sourced from book listings and cover services. Cover artwork belongs to its respective rights holders.
+
+Current shelf:
+
+- Siddhartha: https://covers.openlibrary.org/b/id/6456720-L.jpg
+- Hadji Murad: https://images1.penguinrandomhouse.com/cover/9780812967111
+- Zhou Enlai: A Life: https://www.publishersweekly.com/cover/9780674659582
+- A Sorrow Beyond Dreams: https://covers.openlibrary.org/b/id/13994848-L.jpg
+- Walden: https://images1.penguinrandomhouse.com/cover/9781598530636
+
+Earlier shelf covers retained in the repository:
 
 - A Little Life: https://covers.openlibrary.org/b/id/8144904-L.jpg
 - Words Without Music: https://covers.openlibrary.org/b/isbn/9781631491436-L.jpg

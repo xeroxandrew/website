@@ -1,5 +1,4 @@
 .bookshelf-page { width: min(100% - 48px, 760px); }
-.shelf-instruction { color: #666; font-size: 16px; }
 .shelf-viewport { overflow-x: auto; overscroll-behavior-x: contain; margin-top: 28px; padding: 14px 8px 20px; scrollbar-width: thin; }
 .live-shelf { display: flex; align-items: flex-end; gap: 7px; width: max-content; min-width: 100%; min-height: 286px; padding: 0 8px 0; border-bottom: 2px solid #ddd; }
 .shelf-book { position: relative; display: block; flex: 0 0 auto; width: var(--spine-width, 48px); height: var(--book-height); margin: 0; padding: 0; overflow: hidden; color: var(--spine-ink); background: var(--spine-color); border: 0; border-radius: 2px 3px 1px 1px; box-shadow: inset 2px 0 3px #ffffff30, inset -3px 0 4px #00000030, 2px 1px 3px #00000020; cursor: pointer; font: inherit; text-align: left; transition: width 360ms cubic-bezier(.22, 1, .36, 1), box-shadow 250ms ease; }
@@ -13,7 +12,8 @@
 .shelf-caption { margin: 26px 8px 0; min-height: 120px; }
 .shelf-caption h2 { margin-bottom: 5px; }
 .shelf-caption p { margin-bottom: 14px; color: #666; font-size: 16px; }
-.shelf-caption a { font-size: 14px; }
+.shelf-caption .book-comments { color: #222; font-size: 18px; line-height: 1.55; white-space: pre-wrap; }
+.book-comments:empty { display: none; }
 @media (max-width: 600px) {
   .shelf-viewport { margin-left: -12px; margin-right: -12px; }
   .shelf-caption { margin-left: 0; }
